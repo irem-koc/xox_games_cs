@@ -3,7 +3,8 @@ import { createContext, useState } from "react";
 export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
-    const [first, setfirst] = useState(second)
-    const values= {}
-    return <Context.Provider>{children}</Context.Provider>;
+    const [date, setDate] = useState(null);
+    const values = { date, setDate };
+    return <Context.Provider value={values}>{children}</Context.Provider>;
 };
+export default ContextProvider;
