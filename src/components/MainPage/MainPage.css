@@ -39,6 +39,7 @@
     font-size: 20px;
     line-height: 52px;
     margin-bottom: 21px;
+    border: 0;
 }
 
 ::placeholder {
