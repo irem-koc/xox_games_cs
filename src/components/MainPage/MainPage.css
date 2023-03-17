@@ -1,0 +1,42 @@
+.middle-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mail-input {
+    outline: none;
+    text-align: center;
+    width: 435px;
+    height: 51px;
+    background: #D9D9D9;
+    font-family: 'Inknut Antiqua';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 52px;
+    margin-bottom: 21px;
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.notify-btn {
+    font-family: 'Inknut Antiqua';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 52px;
+    color: #000000;
+    border: none;
+    background: #FFA883;
+    width: 233px;
+    height: 59px;
+}
