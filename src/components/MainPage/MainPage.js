@@ -3,7 +3,7 @@ import { Context } from "../../context/Context";
 import "./MainPage.css";
 
 const MainPage = () => {
-    const { day, hour, minute, setDay, setHour, setMinute } =
+    const { day, hour, minute} =
         useContext(Context);
     useEffect(() => {}, []);
     return (
