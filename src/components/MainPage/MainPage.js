@@ -9,7 +9,7 @@ const MainPage = () => {
     return (
         <div className="middle-section">
             <div className="counter">
-                {day} day {hour} hours {minute} minutes.
+                {day} days {hour} hours {minute} minutes.
             </div>
             <input
                 className="mail-input"
