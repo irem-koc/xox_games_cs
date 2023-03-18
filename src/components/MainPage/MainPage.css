@@ -65,3 +65,6 @@ form{
     align-self: center;
     outline: none;
 }
+.notify-btn:active{
+    transform: translateY(1.5px);
+}

@@ -24,7 +24,9 @@
     border: none;
     background: #FFA883;
 }
-
+.who-btn:active {
+    transform: translateY(1.5px);
+}
 .who-btn>a {
     font-family: 'Inknut Antiqua';
     font-style: normal;
