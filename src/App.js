@@ -17,6 +17,7 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/" element={<MainPage />} exact />
+                        <Route path="*" element={<MainPage />} exact />
                     </Routes>
                 </div>
             </BrowserRouter>

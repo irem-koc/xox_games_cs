@@ -20,7 +20,7 @@ const MainPage = () => {
         setError,
         setShow,
         success,
-        setSuccess
+        setSuccess,
     } = useContext(Context);
     var timer;
     useEffect(() => {
@@ -52,7 +52,7 @@ const MainPage = () => {
         e.preventDefault();
         const url = "http://78.188.150.116:6566/xoxTask";
         const data = {
-            "email": email,
+            email: email,
         };
 
         if (!email.includes("@")) {
@@ -60,24 +60,28 @@ const MainPage = () => {
             setError(
                 `Girmiş olduğunuz email '${email}' geçerli değildir. '@' içermiyor.`
             );
-            setSuccess(false)
+            setSuccess(false);
         } else if (!email.includes(".com")) {
             setShow(true);
             setError(
                 `Girmiş olduğunuz email '${email}' geçerli değildir. '.com' içermiyor .`
             );
-            setSuccess(false)
+            setSuccess(false);
         } else {
-            setSuccess(true)
-            setShow(true)
-            setError(`Başarılı bir şekilde ${email} kaydedilmiştir.`)
+            setShow(true);
+            setError(`Başarılı bir şekilde ${email} kaydedilmiştir.`);
             try {
                 const response = await axios.post(url, data);
-                console.log(response.data);
+                if (response.request.status === 200) {
+                    setSuccess(true);
+                    setError(`Başarılı bir şekilde ${email} kaydedilmiştir.`);
+                }
             } catch (error) {
-                console.log(error);
+                setError(
+                    `${email} kaydedilmemiştir ${error} alınıyor. Daha sonra tekrar deneyiniz.`
+                );
             }
-            setEmail("")
+            setEmail("");
         }
     };
     const handleEmailChange = (e) => {
