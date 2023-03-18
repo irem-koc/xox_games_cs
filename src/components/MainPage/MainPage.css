@@ -63,4 +63,5 @@ form{
     height: 59px;
     align-items: center;
     align-self: center;
+    outline: none;
 }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import { Context } from "../../context/Context";
+import Alert from "../Alert/Alert";
 import "./MainPage.css";
 
 const MainPage = () => {
@@ -15,32 +16,35 @@ const MainPage = () => {
         setMinute,
         setSecond,
         setEmail,
+        error,
+        setError,
+        setShow,
     } = useContext(Context);
     var timer;
     useEffect(() => {
-      timer = setInterval(() => {
-        setSecond(second-1);
-        if(second===0){
-          setMinute(minute-1)
-          setSecond(59)
-        }
-        if(minute===0){
-          setHour(hour-1)
-          setMinute(59)
-        }
-        if(hour===0){
-          setDay(hour-1)
-          setHour(23)
-          
-        }
-        if(day===0){
-          setSecond(0)
-          setMinute(0)
-          setHour(0)
-          setDay(0)
-        }
-      }, 1000);
-      return ()=> clearInterval(timer)
+        timer = setInterval(() => {
+            setSecond(second - 1);
+            if (second === 0) {
+                setMinute(minute - 1);
+                setSecond(59);
+            }
+            if (minute === 0) {
+                setHour(hour - 1);
+                setMinute(59);
+            }
+            if (hour === 0) {
+                setDay(hour - 1);
+                setHour(23);
+            }
+            if (day === 0) {
+                setSecond(0);
+                setMinute(0);
+                setHour(0);
+                setDay(0);
+                return false;
+            }
+        }, 1000);
+        return () => clearInterval(timer);
     });
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -54,6 +58,17 @@ const MainPage = () => {
         } catch (error) {
             console.log(error);
         }
+        if (!email.includes("@")) {
+            setShow(true);
+            setError("Girmiş olduğunuz email geçerli değildir. '@' içermiyor.");
+        } else if (!email.includes(".com")) {
+            setShow(true);
+            setError(
+                "Girmiş olduğunuz email geçerli değildir. '.com' içermiyor ."
+            );
+        } else {
+            setShow(false);
+        }
     };
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -61,7 +76,14 @@ const MainPage = () => {
     return (
         <div className="middle-section">
             <div className="counter">
-                {day} days {hour} hours {minute} minutes {second} seconds.
+                {day > 0 && hour > 0 && minute > 0 && second > 0 ? (
+                    <div>
+                        {day} days {hour} hours {minute} minutes {second}{" "}
+                        seconds.
+                    </div>
+                ) : (
+                    <div>Finished!</div>
+                )}
             </div>
             <form onSubmit={handleSubmit}>
                 <input
@@ -75,6 +97,7 @@ const MainPage = () => {
                     Get Notified
                 </button>
             </form>
+            {error ? <Alert /> : ""}
         </div>
     );
 };

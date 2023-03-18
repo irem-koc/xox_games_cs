@@ -7,8 +7,25 @@ const ContextProvider = ({ children }) => {
     const [hour, setHour] = useState(23);
     const [minute, setMinute] = useState(59);
     const [second, setSecond] = useState(59);
-    const [email, setEmail] = useState('')
-    const values = { day, hour, minute, setDay, setHour, setMinute,email, setEmail,second, setSecond };
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
+    const [show, setShow] = useState(false);
+    const values = {
+        day,
+        hour,
+        minute,
+        setDay,
+        error,
+        setError,
+        setHour,
+        setMinute,
+        email,
+        setEmail,
+        second,
+        setSecond,
+        show,
+        setShow,
+    };
     return <Context.Provider value={values}>{children}</Context.Provider>;
 };
 export default ContextProvider;
