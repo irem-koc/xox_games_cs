@@ -4,7 +4,7 @@
     position: sticky;
     width: 200px;
     padding: 20px;
-    background-color: #ff1100;
+    background-color: #ff0000;
     color: white;
 }
 
@@ -21,4 +21,13 @@
 
 .closebtn:hover {
     color: black;
+}
+.success{
+    margin-top:10px;
+    text-align: center;
+    position: sticky;
+    width: 200px;
+    padding: 20px;
+    background-color: #00ff2a;
+    color: white;
 }

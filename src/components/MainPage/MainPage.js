@@ -19,6 +19,8 @@ const MainPage = () => {
         error,
         setError,
         setShow,
+        success,
+        setSuccess
     } = useContext(Context);
     var timer;
     useEffect(() => {
@@ -50,24 +52,33 @@ const MainPage = () => {
         e.preventDefault();
         const url = "http://78.188.150.116:6566/xoxTask";
         const data = {
-            email: email,
+            "email": email,
         };
-        try {
-            const response = await axios.post(url, data);
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
-        }
+
         if (!email.includes("@")) {
             setShow(true);
-            setError("Girmiş olduğunuz email geçerli değildir. '@' içermiyor.");
+            setError(
+                `Girmiş olduğunuz email '${email}' geçerli değildir. '@' içermiyor.`
+            );
+            setSuccess(false)
         } else if (!email.includes(".com")) {
             setShow(true);
             setError(
-                "Girmiş olduğunuz email geçerli değildir. '.com' içermiyor ."
+                `Girmiş olduğunuz email '${email}' geçerli değildir. '.com' içermiyor .`
             );
+            setSuccess(false)
         } else {
-            setShow(false);
+            setSuccess(true)
+            setShow(true)
+            
+            try {
+                const response = await axios.post(url, data);
+                console.log(response.data);
+                setSuccess(true)
+            } catch (error) {
+                console.log(error);
+            }
+            setEmail("")
         }
     };
     const handleEmailChange = (e) => {
@@ -76,7 +87,7 @@ const MainPage = () => {
     return (
         <div className="middle-section">
             <div className="counter">
-                {day > 0 && hour > 0 && minute > 0 && second > 0 ? (
+                {day > 0 || hour > 0 || minute > 0 || second > 0 ? (
                     <div>
                         {day} days {hour} hours {minute} minutes {second}{" "}
                         seconds.

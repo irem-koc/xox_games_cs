@@ -9,6 +9,7 @@ const ContextProvider = ({ children }) => {
     const [second, setSecond] = useState(59);
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState(false);
     const [show, setShow] = useState(false);
     const values = {
         day,
@@ -25,6 +26,8 @@ const ContextProvider = ({ children }) => {
         setSecond,
         show,
         setShow,
+        success,
+        setSuccess,
     };
     return <Context.Provider value={values}>{children}</Context.Provider>;
 };
