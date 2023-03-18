@@ -70,11 +70,10 @@ const MainPage = () => {
         } else {
             setSuccess(true)
             setShow(true)
-            
+            setError(`Başarılı bir şekilde ${email} kaydedilmiştir.`)
             try {
                 const response = await axios.post(url, data);
                 console.log(response.data);
-                setSuccess(true)
             } catch (error) {
                 console.log(error);
             }

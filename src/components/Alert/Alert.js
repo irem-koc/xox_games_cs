@@ -5,23 +5,16 @@ const Alert = () => {
     const { email, error, show, setShow, success } = useContext(Context);
 
     return show ? (
-        success ? (
-            <div className="success">
-                <span className="closebtn" onClick={() => setShow(!show)}>
-                    &times;
-                </span>
-
-                Başarılı bir şekilde {email} kaydedilmiştir.
-            </div>
-        ) : (
-            <div className="alert">
-                <span className="closebtn" onClick={() => setShow(!show)}>
-                    &times;
-                </span>
-
-                {error}
-            </div>
-        )
+        <div>
+            {
+                <div className={success ? "success" : "alert"}>
+                    <span className="closebtn" onClick={() => setShow(!show)}>
+                        &times;
+                    </span>
+                    {error}
+                </div>
+            }
+        </div>
     ) : (
         ""
     );
