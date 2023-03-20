@@ -21,10 +21,10 @@ const MainPage = () => {
         setShow,
         setSuccess,
     } = useContext(Context);
-    
-    var timer;// eslint-disable-line 
+
+     // eslint-disable-line
     useEffect(() => {
-        timer = setInterval(() => {
+        const timer = setInterval(() => {
             setSecond(second - 1);
             if (second === 0) {
                 setMinute(minute - 1);
