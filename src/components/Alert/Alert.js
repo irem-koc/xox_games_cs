@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../context/Context";
 import "./Alert.css";
 const Alert = () => {
-    const { email, error, show, setShow, success } = useContext(Context);
+    const { error, show, setShow, success } = useContext(Context);
 
     return show ? (
         <div>

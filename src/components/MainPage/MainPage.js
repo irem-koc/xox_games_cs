@@ -19,10 +19,10 @@ const MainPage = () => {
         error,
         setError,
         setShow,
-        success,
         setSuccess,
     } = useContext(Context);
-    var timer;
+    
+    var timer;// eslint-disable-line 
     useEffect(() => {
         timer = setInterval(() => {
             setSecond(second - 1);
